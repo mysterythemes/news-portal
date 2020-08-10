@@ -340,7 +340,7 @@ if( class_exists( 'WP_Customize_Section' ) ) {
          * @access public
          * @var    string
          */
-        public $type = 'upsell';
+        public $type = 'mt-upsell';
 
         /**
          * Custom button text to output.

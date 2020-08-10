@@ -4,7 +4,7 @@
  *
  * @package Mystery Themes
  * @subpackage News Portal
- * @since 1.1.1
+ * @since 1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,16 +30,8 @@ class News_Portal_Settings {
         add_action( 'after_setup_theme', array( $this, 'news_portal_theme_rating_notice' ) );
 		add_action( 'switch_theme', array( $this, 'news_portal_theme_rating_notice_data_remove' ) );
 
-		add_action( 'wp_ajax_activate_demo_importer_plugin', array( $this, 'activate_demo_importer_plugin' ) );
-		add_action( 'wp_ajax_install_demo_importer_plugin', array( $this, 'install_demo_importer_plugin' ) );
-		$this->load_dependencies();
-	}
-
-	/**
-	 * Load dependent files.
-	 */
-	public function load_dependencies() {
-		require get_template_directory(). '/inc/theme-settings/mt-theme-demo-library.php';
+		add_action( 'wp_ajax_news_portal_activate_plugin', array( $this, 'activate_demo_importer_plugin' ) );
+		add_action( 'wp_ajax_news_portal_install_plugin', array( $this, 'install_demo_importer_plugin' ) );
 	}
 
 	/**
@@ -56,10 +48,7 @@ class News_Portal_Settings {
 	 */
 	public function about_theme_styles( $hook ) {
 		global $news_portal_version;
-		$theme_notice_option = get_option( 'news_portal_admin_notice_welcome' );
-		if ( $theme_notice_option ) {
-			wp_enqueue_style( 'mt-theme-review-notice', get_template_directory_uri() . '/inc/theme-settings/assets/css/theme-review-notice.css', array(), esc_attr( $news_portal_version ) );
-		}
+		wp_enqueue_style( 'mt-theme-review-notice', get_template_directory_uri() . '/inc/theme-settings/assets/css/theme-review-notice.css', array(), esc_attr( $news_portal_version ) );
 
 		if ( 'appearance_page_news-portal-settings' != $hook && 'themes.php' != $hook ) {
 			return;
@@ -173,7 +162,7 @@ class News_Portal_Settings {
 				<?php printf( esc_html__( 'Clicking get started will process to installation of %1$s Mystery Themes Demo Importer %2$s Plugin in your dashboard. After success it will redirect to the theme settings page.', 'news-portal' ), '<strong>', '</strong>' ); ?>
 			</p>
 			<div class="submit">
-				<button class="mt-get-started button button-primary button-hero" data-done="<?php esc_html_e( 'Done!', 'news-portal' ); ?>" data-process="<?php esc_html_e( 'Processing', 'news-portal' ); ?>" data-redirect="<?php echo esc_url( wp_nonce_url( add_query_arg( 'news-portal-hide-notice', 'welcome', admin_url( 'themes.php' ).'?page=news-portal-settings&tab=demos' ) , 'news_portal_hide_notices_nonce', '_news_portal_notice_nonce' ) ); ?>">
+				<button class="mt-get-started button button-primary button-hero" data-done="<?php esc_attr_e( 'Done!', 'news-portal' ); ?>" data-process="<?php esc_attr_e( 'Processing', 'news-portal' ); ?>" data-redirect="<?php echo esc_url( wp_nonce_url( add_query_arg( 'news-portal-hide-notice', 'welcome', admin_url( 'themes.php' ).'?page=news-portal-settings&tab=demos' ) , 'news_portal_hide_notices_nonce', '_news_portal_notice_nonce' ) ); ?>">
 					<?php printf( esc_html__( 'Get started with %1$s', 'news-portal' ), esc_html( $theme_name ) ); ?>
 				</button>
 			</div>
@@ -338,8 +327,7 @@ class News_Portal_Settings {
 		$demodata 			= get_transient( 'news_portal_demo_packages' );
 		
 		if ( empty( $demodata ) || $demodata == false ) {
-			$news_portal_library = new News_Portal_Demo_Library();
-			$demodata = $news_portal_library->retrieve_demo_by_activatetheme();
+			$demodata = get_transient( 'mtdi_theme_packages' );
 			if ( $demodata ) {
 				set_transient( 'news_portal_demo_packages', $demodata, WEEK_IN_SECONDS );
 			}
@@ -356,8 +344,10 @@ class News_Portal_Settings {
 						<div class="demos wp-clearfix">
 						<?php
 							if ( isset( $demodata ) && empty( $demodata ) ) {
-								esc_html_e( 'No demos are configured for this theme, please contact the theme author', 'news-portal' );
-								return;
+						?>
+								<span class="configure-msg"><?php esc_html_e( 'No demos are configured for this theme, please contact the theme author', 'news-portal' ); ?></span>
+						<?php	
+								//return;
 							} else {
 						?>
 								<div class="mt-demo-wrapper mtdi_gl js-ocdi-gl">

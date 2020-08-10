@@ -3,10 +3,10 @@
  */
 
 jQuery(document).ready(function($) {
-    var WpAjaxurl = mtaboutObject.ajax_url;
-    var _wpnonce = mtaboutObject._wpnonce;
-    var action = mtaboutObject.action;
-
+    var WpAjaxurl   = mtaboutObject.ajax_url;
+    var _wpnonce    = mtaboutObject._wpnonce;
+    var action      = mtaboutObject.action;
+    
     /**
      * Popup on click demo import if code vibrant demo importer plugin is not activated.
      */
@@ -15,12 +15,12 @@ jQuery(document).ready(function($) {
     switch( action ) {
         case 'activate' : $( '.mt-activate-demo-import-plugin' ).on( 'click', function() {
                 var _this = $( this );
-                news_portal_do_plugin( 'activate_demo_importer_plugin', _this );
+                news_portal_do_plugin( 'news_portal_activate_plugin', _this );
             });
             break;
         case 'install' : $( '.mt-install-demo-import-plugin' ).on( 'click', function() {
                 var _this = $( this );
-                news_portal_do_plugin( 'install_demo_importer_plugin', _this );
+                news_portal_do_plugin( 'news_portal_install_plugin', _this );
             });
             break;
     }
@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
                 }
                 location.reload();
             }
-        })
+        });
     }
 
 });

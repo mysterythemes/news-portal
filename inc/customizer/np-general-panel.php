@@ -119,8 +119,37 @@ function news_portal_general_settings_register( $wp_customize ) {
                 'fullwidth_layout' => __( 'FullWidth Layout', 'news-portal' ),
                 'boxed_layout' => __( 'Boxed Layout', 'news-portal' )
             ),
+            'priority'      => 5,
         )
     );
+
+    /**
+     * Switch option for dark mode style
+     *
+     * @since 1.2.1
+     */
+    $wp_customize->add_setting( 'news_portal_dark_mode_option',
+        array(
+            'default'           => 'hide',
+            'sanitize_callback' => 'news_portal_sanitize_switch_option',
+        )
+    );
+    $wp_customize->add_control( new News_Portal_Customize_Switch_Control(
+        $wp_customize, 'news_portal_dark_mode_option',
+            array(
+                'type'          => 'switch',
+                'label'         => esc_html__( 'Dark Mode', 'news-portal' ),
+                'description'   => esc_html__( 'Enable/Disable option for dark mode style.', 'news-portal' ),
+                'section'       => 'news_portal_website_layout_section',
+                'choices'       => array(
+                    'show'  => esc_html__( 'Enable', 'news-portal' ),
+                    'hide'  => esc_html__( 'Disable', 'news-portal' )
+                    ),
+                'priority'      => 10,
+            )
+        )
+    );
+
 /*------------------------------------------------------------------------------------------*/
     /**
      * Title and tagline checkbox

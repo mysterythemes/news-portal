@@ -1,10 +1,9 @@
 === News Portal ===
 
 Contributors:       mysterythemes
-Requires at least:  WordPress 4.0
-Tested up to:       WordPress 5.3
-Stable tag: 		1.2.0
-Requires PHP: 		5.6
+Requires at least:  4.7
+Tested up to:       5.4
+Requires PHP:       5.2.4
 License:            GPLv3 or later
 License URI:        http://www.gnu.org/licenses/gpl-3.0.html
 Tags:               news, blog, entertainment, grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, custom-logo, featured-image-header, footer-widgets, full-width-template, rtl-language-support, theme-options, translation-ready
@@ -12,7 +11,7 @@ Tags:               news, blog, entertainment, grid-layout, one-column, two-colu
 
 == Description ==
 
-News Portal is the ultimate magazine theme with creative design and powerful features that allow you to quickly and easily create a style to suit your needs. It is completely built on Customizer which allows you to customize most of the theme settings easily with live previews. It is the fully widgetized theme so as to let users manage the website using the easy to use widgets. News Portal Theme is the best choice to create a Beautiful & Powerful News/magazine/blog websites with ease. Get free support at https://mysterythemes.com/support/forum/themes/free-themes/ and check the demo at http://demo.mysterythemes.com/news-portal-landing/
+News Portal is the ultimate magazine theme with creative design and powerful features that allow you to quickly and easily create a style to suit your needs. It is completely built on Customizer which allows you to customize most of the theme settings easily with live previews. It is the fully widgetized theme so as to let users manage the website using the easy to use widgets. You can import the whole beautiful demo in just one click. News Portal Theme is the best choice to create a Beautiful & Powerful News/magazine/blog websites with ease. Get free support at https://mysterythemes.com/support/forum/themes/free-themes/ and check the demo at https://demo.mysterythemes.com/news-portal-demos/
 
 == Installation ==
 
@@ -26,8 +25,12 @@ News Portal WordPress Theme, Copyright 2017 Mystery Themes.
 News Portal is distributed under the terms of the GNU GPL
 
 == Resources ==
-	Official Mystery Themes Github Repository
-    Source: https://raw.githubusercontent.com/mysterythemes/themes-demo-pack/
+	normalize.css, Copyright 2012-2016 Nicolas Gallagher and Jonathan Neal
+    License: MIT Source: https://necolas.github.io/normalize.css/
+
+    Theme name is based on Underscores http://underscores.me/,
+    (C) 2012-2017 Automattic, Inc.
+    License: GNU General Public License v2 or later
 
 	Font Awesome by Dave Gandy
     Licenses: SIL OFL 1.1, MIT, CC BY 3.0
@@ -45,19 +48,30 @@ News Portal is distributed under the terms of the GNU GPL
 	License: GNU GPL, Version 2
 	Source: https://github.com/TGMPA/TGM-Plugin-Activation
 
+	TRT Customizer Pro, Copyright 2016 by Justin Tadlock
+    License: GPLv2 or later
+    Source: https://github.com/justintadlock/trt-customizer-pro
+
 	Screenshot Images
     Licenses: CCO Public Domain
-	https://www.pexels.com/photo/adult-boy-break-browsing-306534/
-	https://pixabay.com/en/audience-concert-guitar-guitarist-1835431/
-	https://pixabay.com/en/character-forest-woman-white-dress-1460508/
-	https://www.pexels.com/photo/mobile-phone-samsung-edge-samsung-galaxy-s6-edge-plus-50614/
-	https://www.pexels.com/photo/adult-book-business-cactus-297755/
-	https://pixabay.com/en/museum-art-exhibition-frame-2602957/
-	https://www.pexels.com/photo/abandoned-airplane-apocalypse-crash-6709/
-	https://www.pexels.com/photo/vegetable-salad-on-white-ceramic-plate-163018/
+	https://pxhere.com/en/photo/1554977
+	https://pxhere.com/en/photo/51334
+	https://pxhere.com/en/photo/112362
+	https://pxhere.com/en/photo/1046901
+	https://pxhere.com/en/photo/1409031
+	https://pxhere.com/en/photo/233817
+	https://pxhere.com/en/photo/884591
+	https://pxhere.com/en/photo/625273
 
 == Changelog ==
-
+= 1.2.1 - August 10, 2020 =
+	* Added - dark mode style.
+	* Fixed - prefix for function and global variables.
+	* Removed - theme demo's library class.
+	* Removed - unused css and commented code.
+	* Updated - screenshot image url updated.
+	* Changed - screenshot changed.
+	
 = 1.2.0 - May 21, 2020 =
 	* Theme settings page added replacing old welcome page.
 	* Changed - welcome page to settings page.

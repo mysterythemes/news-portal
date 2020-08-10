@@ -36,3 +36,7 @@
 a.notice-dismiss {
     text-decoration: none;
 }
+
+.mt-get-started.updating-message::before {
+    margin-top: 12px !important;
+}

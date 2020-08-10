@@ -161,13 +161,13 @@ function news_portal_save_post_meta( $post_id ) {
     /**
      * Post sidebar
      */
-    $post_sidebar = get_post_meta( $post_id, 'np_single_post_sidebar', true );
-    $stz_post_sidebar = sanitize_text_field( $_POST['np_single_post_sidebar'] );
-
-    if ( $stz_post_sidebar && $stz_post_sidebar != $post_sidebar ) {  
-        update_post_meta ( $post_id, 'np_single_post_sidebar', $stz_post_sidebar );
-    } elseif ( '' == $stz_post_sidebar && $post_sidebar ) {  
-        delete_post_meta( $post_id,'np_single_post_sidebar', $post_sidebar );  
+    if ( isset( $_POST['np_single_post_sidebar'] ) ) {
+        
+        // We validate making sure that the option is something we can expect.
+        $value = in_array( $_POST['np_single_post_sidebar'], array( 'default-sidebar', 'left-sidebar', 'right-sidebar', 'no-sidebar', 'no-sidebar-center' ) ) ? $_POST['post_sidebar'] : 'default-sidebar';
+        
+        // We update our post meta.
+        update_post_meta( $post_id, 'np_single_post_sidebar', $value );
     }
 
     /**
